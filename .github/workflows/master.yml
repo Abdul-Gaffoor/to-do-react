@@ -44,5 +44,5 @@ jobs:
        with: 
          status: ${{ job.status }}
          channel: '#deployment-alerts'
-         message: Deployed ${{ secrets.APPLICATION_NAME }} from {{ env.GITHUB_REF_NAME }} branch Successfully
+         message: Successfully Deployed Repository:{{ env.GITHUB_REPOSITORY }} in the Branch:{{ env.GITHUB_REF_NAME }} and workflows triggered by the action:{{ env.GITHUB_REF }}.
        if: always()   
