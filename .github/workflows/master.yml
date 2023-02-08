@@ -47,17 +47,17 @@ jobs:
     #      message: Successfully Deployed Repository:{{ env.GITHUB_REPOSITORY }} in the Branch:{{ env.GITHUB_REF_NAME }} and workflows triggered by the action:{{ env.GITHUB_REF }}.
     #    if: always()   
      
-     - name: Slack Notification - Failure
-       uses: act10ns/slack@v1
-       with: 
-         status: ${{ job.status }}
-         channel: '#deployment-alerts'
-         message: |
-           Deployment Failed for Repository:{{ env.GITHUB_REPOSITORY }}
-           Branch:{{ env.GITHUB_REF_NAME }}
-           Workflow Triggered:{{ env.GITHUB_REF }}
-           Failure Reason: ${{ job.status }} on {{ runner.os }}
-       if: failure()
+     - name: Slack Notification - Success
+        uses: act10ns/slack@v1
+        with: 
+          status: ${{ job.status }}
+          webhook: ${{ env.SLACK_WEBHOOK }}
+          channel: '#deployment-alerts'
+          message: |
+            Successfully Deployed Repository:{{ env.GITHUB_REPOSITORY }}
+            Branch:{{ env.GITHUB_REF_NAME }}
+            Workflow Triggered:{{ env.GITHUB_REF }}
+        if: success()
 
      - name: Slack Notification - Failure
        uses: act10ns/slack@v1
