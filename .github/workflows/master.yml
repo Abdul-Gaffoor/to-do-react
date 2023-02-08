@@ -6,6 +6,10 @@ on:
 jobs:
  Deploy:
    runs-on: ubuntu-latest
+   env:
+     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+     AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+     AWS_CLOUDFRONT_URL: ${{ secrets.AWS_CLOUDFRONT_URL }}
    steps:
      - name: Checkout
        uses: actions/checkout@v2
@@ -34,3 +38,11 @@ jobs:
       
      - name: Update Cloudfront with New-Build
        run: aws cloudfront create-invalidation --distribution-id EWQ8188P63YY0 --paths '/*'
+
+     - name: Slack Notification
+       uses: act10ns/slack@v1
+       with: 
+         status: ${{ job.status }}
+         channel: '#deployment-alerts'
+         message: Deployed {{ env.GITHUB_REF_NAME }} branch Successfully
+       if: always()   
