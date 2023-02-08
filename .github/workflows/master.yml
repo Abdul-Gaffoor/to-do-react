@@ -45,7 +45,7 @@ jobs:
          status: ${{ job.status }}
          channel: '#deployment-alerts'
          message: |
+           Workflow initiated by: {{ env.GITHUB_ACTOR }} 
            Repository:  {{ env.GITHUB_REPOSITORY }}
            Branch:  {{ env.GITHUB_REF_NAME }}
-           Workflow Triggered:  {{ env.GITHUB_REF }}
        if: always()
