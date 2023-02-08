@@ -39,14 +39,6 @@ jobs:
      - name: Update Cloudfront with New-Build
        run: aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_URL --paths '/*'
 
-    #  - name: Slack Notification
-    #    uses: act10ns/slack@v1
-    #    with: 
-    #      status: ${{ job.status }}
-    #      channel: '#deployment-alerts'
-    #      message: Successfully Deployed Repository:{{ env.GITHUB_REPOSITORY }} in the Branch:{{ env.GITHUB_REF_NAME }} and workflows triggered by the action:{{ env.GITHUB_REF }}.
-    #    if: always()   
-     
      - name: Slack Notification - Success
         uses: act10ns/slack@v1
         with: 
