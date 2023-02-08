@@ -45,5 +45,5 @@ jobs:
        with: 
          status: ${{ job.status }}
          channel: '#deployment-alerts'
-         message: Deployed ${{ APPLICATION_NAME }} from {{ env.GITHUB_REF_NAME }} branch Successfully
+         message: Deployed ${{ env.APPLICATION_NAME }} from {{ env.GITHUB_REF_NAME }} branch Successfully
        if: always()   
