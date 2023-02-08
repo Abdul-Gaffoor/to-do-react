@@ -2,7 +2,7 @@ name: React App on AWS-S3 through Cloudfront
 on:
  push:
    branches:
-     - master
+     - ${{ env.BRANCH }}
    paths-ignore:
      - README.md
 jobs:
