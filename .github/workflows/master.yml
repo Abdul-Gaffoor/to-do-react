@@ -31,10 +31,10 @@ jobs:
          aws-region: us-east-1
 
      - name: Delete Old Build in S3
-       run: aws s3 rm s3://abdul-githubactions --recursive
+       run: aws s3 rm s3://$AWS_S3_BUCKET --recursive
        
      - name: Update New Build to S3
-       run: aws s3 cp --recursive --acl public-read ./build/ s3://abdul-githubactions/  
+       run: aws s3 cp --recursive --acl public-read ./build/ s3://$AWS_S3_BUCKET/  
       
      - name: Update Cloudfront with New-Build
        run: aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_URL --paths '/*'
