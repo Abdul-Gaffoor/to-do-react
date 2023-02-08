@@ -37,7 +37,7 @@ jobs:
        run: aws s3 cp --recursive --acl public-read ./build/ s3://abdul-githubactions/  
       
      - name: Update Cloudfront with New-Build
-       run: aws cloudfront create-invalidation --distribution-id EWQ8188P63YY0 --paths '/*'
+       run: aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_URL --paths '/*'
 
      - name: Slack Notification
        uses: act10ns/slack@v1
