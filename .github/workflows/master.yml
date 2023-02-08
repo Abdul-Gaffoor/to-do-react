@@ -10,7 +10,6 @@ jobs:
      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
      AWS_CLOUDFRONT_URL: ${{ secrets.AWS_CLOUDFRONT_URL }}
-     APP_NAME: ${{ secrets.APPLICATION_NAME }}
    steps:
      - name: Checkout
        uses: actions/checkout@v2
@@ -45,5 +44,5 @@ jobs:
        with: 
          status: ${{ job.status }}
          channel: '#deployment-alerts'
-         message: Deployed $APP_NAME from {{ env.GITHUB_REF_NAME }} branch Successfully
+         message: Deployed ${{ env.APPLICATION_NAME }} from {{ env.GITHUB_REF_NAME }} branch Successfully
        if: always()   
