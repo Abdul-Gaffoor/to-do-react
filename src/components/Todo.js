@@ -47,7 +47,7 @@ function Todo() {
             completed: true
         },
         {
-            title: "Do your workout",
+            title: "Github Actions Test",
             completed: true
         },
         {
