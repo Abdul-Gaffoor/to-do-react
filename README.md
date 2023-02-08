@@ -9,7 +9,7 @@ This is React App deployed through AWS cloudfront using AWS-S3 bucket as code so
 
 The environment variables, SLACK_WEBHOOK_URL, AWS_S3_BUCKET, AWS_CLOUDFRONT_URL and AWS_ACCESS_KEY and AWS_SECRET_KEY are stored as secrets in the Github repository and are used to configure the AWS credentials.
 
-The steps performed in the workflow are:
+#### The steps performed in the workflow are:
 - Checkout - checks out the code from the Github repository.
 - Setup node - sets up the node environment for the workflow.
 - Install dependencies - installs the necessary dependencies for the React application.
