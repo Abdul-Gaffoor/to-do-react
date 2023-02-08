@@ -1,3 +1,7 @@
-# to-do-react
+# GitHub Actions for React.JS App
 
-This is React App
+
+## Infrastructure
+This is React App deployed through AWS cloudfront using AWS-S3 bucket as code source
+
+
