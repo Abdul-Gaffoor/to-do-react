@@ -2,7 +2,7 @@ name: React App on AWS-S3 through Cloudfront
 on:
  push:
    branches:
-     - $BRANCH
+     - master
    paths-ignore:
      - README.md
 jobs:
@@ -42,7 +42,7 @@ jobs:
      - name: Update Cloudfront with New-Build
        run: aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_URL --paths '/*'
      
-     - name: Slack Notification - Success
+     - name: Slack Notification
        uses: act10ns/slack@v1
        with: 
          status: ${{ job.status }}
@@ -51,4 +51,6 @@ jobs:
            Workflow initiated by: {{ env.GITHUB_ACTOR }} 
            Repository:  {{ env.GITHUB_REPOSITORY }}
            Branch:  {{ env.GITHUB_REF_NAME }}
+           Commit:  {{ env.GITHUB_SHA }}
+           Commit Message: {{ env.GITHUB_SHA.commit.message }}
        if: always()
